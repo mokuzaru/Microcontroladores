@@ -1,0 +1,43 @@
+Warning[205] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\EJEM02.ASM 2 : Found directive in column 1. (list)
+Warning[205] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\EJEM02.ASM 3 : Found directive in column 1. (include)
+Warning[205] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\EJEM02.ASM 4 : Found directive in column 1. (include)
+Warning[207] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\MACRO16F877.INC 131 : Found label after column 1. (InicioLcd)
+Warning[207] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\MACRO16F877.INC 135 : Found label after column 1. (ponerc)
+Warning[207] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\MACRO16F877.INC 140 : Found label after column 1. (putv)
+Warning[207] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\MACRO16F877.INC 145 : Found label after column 1. (cursor)
+Warning[207] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\MACRO16F877.INC 164 : Found label after column 1. (enter)
+Warning[207] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\MACRO16F877.INC 169 : Found label after column 1. (borralcd)
+Warning[207] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\MACRO16F877.INC 174 : Found label after column 1. (desplazaderecha)
+Warning[207] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\MACRO16F877.INC 179 : Found label after column 1. (desplazaizquierda)
+Warning[205] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\EJEM02.ASM 5 : Found directive in column 1. (__config)
+Warning[205] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\EJEM02.ASM 6 : Found directive in column 1. (cblock)
+Warning[205] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\EJEM02.ASM 7 : Found directive in column 1. (ENDC)
+Warning[205] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\EJEM02.ASM 8 : Found directive in column 1. (org)
+Warning[203] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\EJEM02.ASM 9 : Found opcode in column 1. (call)
+Warning[205] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\EJEM02.ASM 27 : Found directive in column 1. (include)
+Warning[205] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\ELECTRONICPIC16F877.ASM 10 : Found directive in column 1. (cblock)
+Warning[205] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\ELECTRONICPIC16F877.ASM 17 : Found directive in column 1. (ENDC)
+Warning[207] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\ELECTRONICPIC16F877.ASM 24 : Found label after column 1. (xx)
+Warning[207] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\ELECTRONICPIC16F877.ASM 27 : Found label after column 1. (xx1)
+Warning[207] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\ELECTRONICPIC16F877.ASM 30 : Found label after column 1. (xx2)
+Message[305] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\ELECTRONICPIC16F877.ASM 33 : Using default destination of 1 (file).
+Message[305] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\ELECTRONICPIC16F877.ASM 35 : Using default destination of 1 (file).
+Message[305] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\ELECTRONICPIC16F877.ASM 37 : Using default destination of 1 (file).
+Warning[207] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\ELECTRONICPIC16F877.ASM 42 : Found label after column 1. (xxx)
+Warning[207] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\ELECTRONICPIC16F877.ASM 45 : Found label after column 1. (xxx1)
+Warning[207] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\ELECTRONICPIC16F877.ASM 48 : Found label after column 1. (xxx2)
+Warning[207] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\ELECTRONICPIC16F877.ASM 51 : Found label after column 1. (xxx3)
+Message[305] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\ELECTRONICPIC16F877.ASM 53 : Using default destination of 1 (file).
+Message[305] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\ELECTRONICPIC16F877.ASM 55 : Using default destination of 1 (file).
+Message[305] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\ELECTRONICPIC16F877.ASM 57 : Using default destination of 1 (file).
+Message[305] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\ELECTRONICPIC16F877.ASM 59 : Using default destination of 1 (file).
+Warning[205] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\EJEM02.ASM 28 : Found directive in column 1. (include)
+Message[302] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\LCD.ASM 102 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\LCD.ASM 125 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\LCD.ASM 144 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\LCD.ASM 145 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\LCD.ASM 146 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\LCD.ASM 147 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[205] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\EJEM02.ASM 29 : Found directive in column 1. (include)
+Message[305] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\RS232_16F877.ASM 112 : Using default destination of 1 (file).
+Warning[205] D:\INFORMES V CICLO\MICROCONTROLADORES\LAB11\EJEM02.ASM 30 : Found directive in column 1. (end)

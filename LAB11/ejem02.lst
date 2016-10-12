@@ -1,0 +1,1623 @@
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 ;Ejemplo 2
+Warning[205]: Found directive in column 1. (list)
+                      00002 list p=16f877a
+Warning[205]: Found directive in column 1. (include)
+                      00003 include<p16f877a.inc>
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ;  MPASM PIC16F877A processor include
+                      00005 ; 
+                      00006 ;  (c) Copyright 1999-2013 Microchip Technology, All rights reserved
+                      00007 ;==========================================================================
+                      00008 
+                      00566         LIST
+Warning[205]: Found directive in column 1. (include)
+                      00004 include<macro16f877.inc>
+                      00001 ;======================================================
+                      00002 ;Nombre de archivo:macro16f877.asm
+                      00003 ;Hecho por: Ing. Carlos Enrique Mendiola Mogollón
+                      00004 ;Empresa: Electronic-digital(CM)
+                      00005 ;E-mail: digitalcorel@hotmail.com
+                      00006 ;Dirección Web:www.electronic-digital.blogspot.com
+                      00007 ;======================================================
+  00000005            00008 porta   equ PORTA
+  00000006            00009 portb   equ PORTB
+  00000007            00010 portc   equ PORTC
+  00000008            00011 portd   equ PORTD
+  00000009            00012 porte   equ PORTE
+  00000086            00013 trisb   equ TRISB
+  00000087            00014 trisc   equ TRISC
+  00000088            00015 trisd   equ TRISD
+  00000000            00016 salida  equ 0
+  00000001            00017 entrada equ 1
+                      00018 ;......................................................
+                      00019 ;******************************************************
+                      00020 ;Operaciones con registros,datos y saltos
+                      00021 ;......................................................
+                      00022 ;******************************************************
+                      00023 ;mover un número a registro
+                      00024 mover        macro   registro,literal
+                      00025              movlw   literal
+                      00026              movwf   registro
+                      00027              endm
+                      00028 ;mover el contenido del registro2 al registro1
+                      00029 movregistro  macro   registro1,registro2
+                      00030              movf    registro2,0
+                      00031              movwf   registro1
+                      00032              endm
+                      00033 ;compara el dato con el registro y salta si no es igual
+                      00034 csni         macro       registro,dato,direcc   
+                      00035                          movlw   dato
+                      00036                      subwf       registro,0
+                      00037                          btfss   STATUS,Z
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00038                          goto    direcc
+                      00039                          endm   
+                      00040 ;compara y salta si no es igual entre registros
+                      00041 csnir        macro      registro1,registro2,direcc
+                      00042                      movf       registro2,0
+                      00043                  subwf  registro1,0
+                      00044                  btfss  STATUS,Z
+                      00045                  goto   direcc
+                      00046                  endm
+                      00047 ;compara dato con registro y salta si es igual
+                      00048 csi          macro      registro,dato,direcc
+                      00049                          movlw  dato
+                      00050                  subwf  registro,0
+                      00051                  btfsc  STATUS,Z
+                      00052                  goto   direcc
+                      00053                  endm
+                      00054 ;compara entre registros y salta si son iguales
+                      00055 csir             macro  registro1,registro2,direcc
+                      00056                          movf   registro2,0
+                      00057                          subwf  registro1,0
+                      00058                          btfsc  STATUS,Z
+                      00059                          goto   direcc
+                      00060                          endm
+                      00061 ;decrementa registro y compara con dato y salta si no es igual
+                      00062 dcsni            macro  registro,dato,direcc
+                      00063                          decf   registro,1
+                      00064                          movlw  dato
+                      00065                      subwf      registro,0
+                      00066                          btfss  STATUS,Z
+                      00067                          goto   direcc
+                      00068                          endm
+                      00069 ;decrementa registro y compara con dato y salta si es igual
+                      00070 dcsi             macro  registro,dato,direcc
+                      00071                          decf   registro,1
+                      00072                          movlw  dato
+                      00073                          subwf  registro,0
+                      00074                          btfsc  STATUS,Z
+                      00075                          goto   direcc
+                      00076                      endm
+                      00077 ;compara y salta si es menor
+                      00078 csme             macro  registro,dato,direcc
+                      00079                          movlw  dato
+                      00080                          subwf  registro,0      ; W = REGISTRO - W
+                      00081                          btfss  STATUS,C        ; ¿C='1'?
+                      00082                          goto   direcc
+                      00083                          endm
+                      00084 ;compara y salta si es menor igual
+                      00085 csmei            macro  registro,dato,direcc
+                      00086                      movlw      dato
+                      00087                          subwf  registro,0      ; W = REGISTRO - W
+                      00088                          btfss  STATUS,C        ; ¿C='1'?
+                      00089                          goto   direcc
+                      00090                          btfsc  STATUS,Z        ; ¿Z='0'?
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00091                          goto   direcc
+                      00092 ;compara y salta si no es menor
+                      00093 csnme            macro  registro,dato,direcc
+                      00094                          movlw  dato
+                      00095                          subwf  registro,0      ; W = REGISTRO - W
+                      00096                          btfsc  STATUS,C        ; ¿C='0'?
+                      00097                          goto   direcc
+                      00098                          endm
+                      00099 ;compara y salta si es mayor o igual
+                      00100 csmai            macro  registro,dato,direcc
+                      00101                          movlw  dato
+                      00102                          subwf  registro,0      ; W = REGISTRO - W
+                      00103                          btfsc  STATUS,C        ; ¿C='0'?
+                      00104                          goto   direcc
+                      00105                          endm
+                      00106 ;Saltos
+                      00107 salta        macro  ETIQUETA
+                      00108              movlw  HIGH    ETIQUETA
+                      00109              movwf  PCLATH
+                      00110              goto   ETIQUETA
+                      00111              endm
+                      00112 ;...............................................................
+                      00113 ;***************************************************************
+                      00114 ;Retardos
+                      00115 ;...............................................................
+                      00116 ;***************************************************************
+                      00117 milisegundo      macro X
+                      00118                          movlw X
+                      00119                          call  Milisegundo
+                      00120                          endm
+                      00121 segundo          macro X
+                      00122                          movlw X
+                      00123                          call  Segundo
+                      00124                          endm
+                      00125 ;...............................................................
+                      00126 ;***************************************************************
+                      00127 ;Para controlar la pantalla LCD 2x16
+                      00128 ;...............................................................
+                      00129 ;***************************************************************
+                      00130 ;Inicializar la pantalla LCd
+Warning[207]: Found label after column 1. (InicioLcd)
+                      00131  InicioLcd macro 
+                      00132            call  Inicio_lcd
+                      00133            endm
+                      00134 ;Para mandar caracter al LCD
+Warning[207]: Found label after column 1. (ponerc)
+                      00135  ponerc    macro ASCII
+                      00136            movlw ASCII
+                      00137            call  EnviaCarLCD
+                      00138            endm
+                      00139 ;Para mandar caracter contenido en un resgistro
+Warning[207]: Found label after column 1. (putv)
+                      00140  putv      macro REGISTRO
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00141            movf  REGISTRO,0
+                      00142            call  EnviaCarLCD
+                      00143            endm
+                      00144 ;Para activar y apagar el cursor del  LCD
+Warning[207]: Found label after column 1. (cursor)
+                      00145  cursor    macro X
+                      00146            if    X==1 
+                      00147            movlw DISP_ON_CURSOR_BLINK
+                      00148            call  EnviaCmdLCD
+                      00149            endif
+                      00150            if    X==0
+                      00151            movlw DISP_ON_NOCURSOR
+                      00152            call  EnviaCmdLCD
+                      00153            endif
+                      00154            if    X==2
+                      00155            movlw CURSOR_LEFT
+                      00156            call  EnviaCmdLCD
+                      00157            endif
+                      00158            if    X ==3
+                      00159            movlw CURSOR_RIGHT
+                      00160            call  EnviaCmdLCD
+                      00161            endif
+                      00162            endm
+                      00163 ;Bajar a la segunda fila de la pantalla LCD
+Warning[207]: Found label after column 1. (enter)
+                      00164  enter     macro
+                      00165            movlw DISP_LINEA2
+                      00166            call  EnviaCmdLCD
+                      00167            endm
+                      00168 ;Borrar escritura LCD
+Warning[207]: Found label after column 1. (borralcd)
+                      00169  borralcd  macro
+                      00170            movlw DISP_CLEAR
+                      00171            call  EnviaCmdLCD
+                      00172            endm
+                      00173 ;Desplazar a la derecha
+Warning[207]: Found label after column 1. (desplazaderecha)
+                      00174  desplazaderecha  macro  
+                      00175                   movlw  DISPLAY_RIGHT
+                      00176                   call   EnviaCmdLCD             
+                      00177                   endm
+                      00178 ;Desplazar a la izquierda
+Warning[207]: Found label after column 1. (desplazaizquierda)
+                      00179  desplazaizquierda  macro              
+                      00180                         movlw  DISPLAY_LEFT
+                      00181                         call   EnviaCmdLCD             
+                      00182                         endm
+                      00183 ;Programación especial para el envio de cadenas
+                      00184 ;de mensajes al LCD
+                      00185 tabla   macro  ETIQUETA,DIRECC,REGISTRO
+                      00186         movf   DIRECC,0
+                      00187         movwf  OFFSET
+                      00188         movlw  HIGH   ETIQUETA
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00189         movwf  PCLATH
+                      00190         movlw  LOW    ETIQUETA
+                      00191         addlw  .1
+                      00192         addwf  OFFSET,0
+                      00193         btfsc  STATUS,C
+                      00194         incf   PCLATH
+                      00195         movf   OFFSET,0
+                      00196         call   ETIQUETA
+                      00197         movwf  REGISTRO
+                      00198         endm
+                      00199 mensaje macro  x
+                      00200         if x==1
+                      00201         call TEXT1
+                      00202         endif
+                      00203         if x==2
+                      00204         call TEXT2
+                      00205         endif
+                      00206         if x==3
+                      00207         call TEXT3
+                      00208         endif
+                      00209         if x==4
+                      00210         call TEXT4
+                      00211         endif
+                      00212         if x==5
+                      00213         call TEXT5
+                      00214         endif
+                      00215         if x==6
+                      00216         call TEXT6
+                      00217         endif
+                      00218         if x==7
+                      00219         call TEXT7
+                      00220         endif
+                      00221         if x==8
+                      00222         call TEXT8
+                      00223         endif
+                      00224         if x==9
+                      00225         call TEXT9
+                      00226         endif
+                      00227         if x==.10
+                      00228         call TEXT10
+                      00229         endif
+                      00230         if x==.11
+                      00231         call TEXT11
+                      00232         endif
+                      00233         if x==.12
+                      00234         call TEXT12
+                      00235         endif
+                      00236         if x==.13
+                      00237         call TEXT13
+                      00238         endif
+                      00239         if x==.14
+                      00240         call TEXT14
+                      00241         endif
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00242         if x==.15
+                      00243         call TEXT15
+                      00244         endif              
+                      00245         endm     
+                      00246 tab_digito   macro  ETIQUETA,DIRECC,REGISTRO
+                      00247         movf   DIRECC,0
+                      00248         movwf  OFFSET_X
+                      00249         movlw  HIGH ETIQUETA
+                      00250         movwf  PCLATH
+                      00251         movlw  LOW ETIQUETA
+                      00252         addlw  .1
+                      00253         addwf  OFFSET_X,0
+                      00254         btfsc  STATUS,C
+                      00255         incf   PCLATH
+                      00256         movf   OFFSET_X,0
+                      00257         call   ETIQUETA
+                      00258         movwf  REGISTRO
+                      00259         endm
+                      00260 ;Cambio de Banco y Páginas
+                      00261 banco   macro   x
+                      00262         if x == 0
+                      00263                 bcf     STATUS,RP0
+                      00264                 bcf     STATUS,RP1
+                      00265         endif
+                      00266         if x == 1
+                      00267                 bsf     STATUS,RP0
+                      00268                 bcf     STATUS,RP1
+                      00269         endif
+                      00270         if x == 2
+                      00271                 bcf     STATUS,RP0
+                      00272                 bsf     STATUS,RP1
+                      00273         endif
+                      00274         if x == 3
+                      00275                 bsf     STATUS,RP0
+                      00276                 bsf     STATUS,RP1
+                      00277         endif
+                      00278         endm
+                      00279 ;pagina
+                      00280 pagina  macro   x
+                      00281         if x == 0
+                      00282                 bcf     PCLATH,3
+                      00283                 bcf     PCLATH,4
+                      00284         endif
+                      00285         if x == 1
+                      00286                 bsf     PCLATH,3
+                      00287                 bcf     PCLATH,4
+                      00288         endif
+                      00289         if x == 2
+                      00290                 bcf     PCLATH,3
+                      00291                 bsf     PCLATH,4
+                      00292         endif
+                      00293         if x == 3
+                      00294                 bsf     PCLATH,3
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00295                 bsf     PCLATH,4
+                      00296         endif
+                      00297         endm
+                      00298 ;-----------------------------------------------
+                      00299 ;Para interactuar con el RS232
+                      00300 InicioRS232  macro 
+                      00301              call   RS232_Inicializa
+                      00302              endm
+                      00303 ;para interactuar con el teclado_proteus
+                      00304 InicioTeclado macro
+                      00305               call  Inicio_TecladoLCD
+                      00306               endm
+                      00307 ;-----------------------------------------------
+                      00308 
+                      00309 
+                      00310 
+                      00311 
+                      00312 
+Warning[205]: Found directive in column 1. (__config)
+2007   3F32           00005 __config        0x3f32
+Warning[205]: Found directive in column 1. (cblock)
+                      00006 cblock  0x20                            ;Variables a utilizar
+Warning[205]: Found directive in column 1. (ENDC)
+                      00007 endc
+Warning[205]: Found directive in column 1. (org)
+0000                  00008 org             0000h                           ;Iniciamos en la posición 0
+Warning[203]: Found opcode in column 1. (call)
+0000   20E2           00009 call    RS232_Inicializa        ;Configuramos los pines Rx(RC7) y Tx(RC6)
+0001                  00010 Repite
+0001   3041           00011         movlw   .65
+0002   20F8           00012         call    RS232_EnviaDato 
+                      00013         milisegundo     .1
+0003   3001               M                          movlw .1
+0004   2012               M                          call  Milisegundo
+                      00014         
+0005   3031           00015         movlw   .49
+0006   20F8           00016         call    RS232_EnviaDato 
+                      00017         milisegundo     .1
+0007   3001               M                          movlw .1
+0008   2012               M                          call  Milisegundo
+                      00018         
+0009   3042           00019         movlw   .66
+000A   20F8           00020         call    RS232_EnviaDato 
+                      00021         milisegundo     .1
+000B   3001               M                          movlw .1
+000C   2012               M                          call  Milisegundo
+                      00022         
+000D   3032           00023         movlw   .50
+000E   20F8           00024         call    RS232_EnviaDato 
+                      00025         milisegundo     .1
+000F   3001               M                          movlw .1
+0010   2012               M                          call  Milisegundo
+0011   2801           00026         goto    Repite                  
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE  8
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[205]: Found directive in column 1. (include)
+                      00027 include<electronicpic16f877.asm>
+                      00001 ;**************************************************************
+                      00002 ;==============================================================
+                      00003 ;Nombre de archivo:Electronicpic16f877.asm
+                      00004 ;Hecho por: Ing. Carlos Enrique Mendiola Mogollón
+                      00005 ;Empresa: Electronic-digital(CM)
+                      00006 ;E-mail: Electronic_digital20@hotmail.com
+                      00007 ;Dirección Web:www.electronic-digital.blogspot.com
+                      00008 ;==============================================================
+                      00009 ;**************************************************************
+Warning[205]: Found directive in column 1. (cblock)
+                      00010 cblock                          
+  00000020            00011 Cont_1        
+  00000021            00012 Cont_2        
+  00000022            00013 Cont_3        
+  00000023            00014 Cont_4        
+  00000024            00015 contador_1      
+  00000025            00016 contador_2                   
+Warning[205]: Found directive in column 1. (ENDC)
+                      00017 endc
+                      00018 ;***************************************************************
+                      00019 ;Rutinas para generación de retardos
+                      00020 ;Frecuencia de cristal:20Mhz
+                      00021 ;***************************************************************
+0012                  00022 Milisegundo
+0012   00A0           00023          movwf  Cont_1
+Warning[207]: Found label after column 1. (xx)
+0013                  00024     xx
+0013   3011           00025          movlw  .17
+0014   00A1           00026          movwf  Cont_2 
+Warning[207]: Found label after column 1. (xx1)
+0015                  00027     xx1
+0015   303A           00028          movlw  .58
+0016   00A2           00029          movwf  Cont_3     
+Warning[207]: Found label after column 1. (xx2)
+0017                  00030     xx2
+0017   0000           00031          nop
+0018   0000           00032          nop
+Message[305]: Using default destination of 1 (file).
+0019   0BA2           00033          decfsz Cont_3     
+001A   2817           00034          goto   xx2
+Message[305]: Using default destination of 1 (file).
+001B   0BA1           00035          decfsz Cont_2 
+001C   2815           00036          goto   xx1
+Message[305]: Using default destination of 1 (file).
+001D   0BA0           00037          decfsz Cont_1
+001E   2813           00038          goto   xx
+001F   0008           00039          return
+0020                  00040 Segundo
+0020   00A0           00041          movwf  Cont_1
+Warning[207]: Found label after column 1. (xxx)
+0021                  00042     xxx
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE  9
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0021   30FA           00043          movlw  .250
+0022   00A1           00044          movwf  Cont_2 
+Warning[207]: Found label after column 1. (xxx1)
+0023                  00045     xxx1
+0023   30FA           00046          movlw  .250
+0024   00A2           00047          movwf  Cont_3     
+Warning[207]: Found label after column 1. (xxx2)
+0025                  00048     xxx2
+0025   3013           00049          movlw  .19
+0026   00A3           00050          movwf  Cont_4 
+Warning[207]: Found label after column 1. (xxx3)
+0027                  00051     xxx3
+0027   0000           00052          nop
+Message[305]: Using default destination of 1 (file).
+0028   0BA3           00053          decfsz Cont_4 
+0029   2827           00054          goto   xxx3
+Message[305]: Using default destination of 1 (file).
+002A   0BA2           00055          decfsz Cont_3     
+002B   2825           00056          goto   xxx2
+Message[305]: Using default destination of 1 (file).
+002C   0BA1           00057          decfsz Cont_2 
+002D   2823           00058          goto   xxx1
+Message[305]: Using default destination of 1 (file).
+002E   0BA0           00059          decfsz Cont_1
+002F   2821           00060          goto   xxx
+0030   0008           00061          return
+                      00062 ;***************************************************************
+                      00063 ;Rutinas para el uso de display 7 segmentos ánodo y cátodo común
+                      00064 ;***************************************************************
+0031                  00065 DisplayCatodoComun
+0031   0782           00066         addwf   PCL,1
+0032   343F           00067         retlw   0X3F        ;Número 0
+0033   3406           00068         retlw   0X06        ;Número 1
+0034   345B           00069         retlw   0X5B        ;Número 2
+0035   344F           00070         retlw   0X4F        ;Número 3
+0036   3466           00071         retlw   0X66        ;Número 4
+0037   346D           00072         retlw   0X6D        ;Número 5
+0038   347D           00073         retlw   0X7D        ;Número 6
+0039   3407           00074         retlw   0X07        ;Número 7
+003A   347F           00075         retlw   0X7F        ;Número 8
+003B   346F           00076         retlw   0X6F        ;Número 9
+003C                  00077 DisplayAnodoComun
+003C   0782           00078         addwf   PCL,1
+003D   3440           00079         retlw   0X40        ;Número 0
+003E   3479           00080         retlw   0X79        ;Número 1
+003F   3424           00081         retlw   0X24        ;Número 2
+0040   3430           00082         retlw   0X30        ;Número 3
+0041   3419           00083         retlw   0X19        ;Número 4
+0042   3412           00084         retlw   0X12        ;Número 5
+0043   3402           00085         retlw   0X02        ;Número 6
+0044   3478           00086         retlw   0X78        ;Número 7
+0045   3400           00087         retlw   0X00        ;Número 8
+0046   3410           00088         retlw   0X10        ;Número 9
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE 10
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00089       
+                      00090 ;*************************************************************
+  00000082            00091 t0                  equ 0x82    ;constante para generar aprox. 25ms
+  00000018            00092 t4.6ms          equ     0x06*4  ;constante para generar 4,6ms
+  00000050            00093 t15.4ms         equ     0x14*4  ;constante para generar 15,4ms
+  00000001            00094 t200us          equ     0x01    ;constante para generar aprox. 200us
+                      00095 
+                      00096 ;*************************************************************
+0047                  00097 retardo:
+0047   01A4           00098         clrf    contador_1              ;aclara contador1
+0048   0BA4           00099 ret     decfsz  contador_1,F    
+0049   2848           00100         goto    ret
+004A   0BA5           00101         decfsz  contador_2,F
+004B   2848           00102         goto    ret
+004C   0008           00103         return  
+                      00104 
+004D                  00105 ret50ms:                                        ;RETARDO 50 ms
+004D   3082           00106         movlw   t0              
+004E   00A5           00107         movwf   contador_2
+004F   2047           00108         call    retardo
+0050   2047           00109         call    retardo
+0051   0008           00110         return
+                      00111 
+0052                  00112 ret100ms:                                       ;RETARDO 100 ms
+0052   204D           00113         call    ret50ms         
+0053   204D           00114         call    ret50ms
+0054   0008           00115         return
+                      00116 
+0055                  00117 ret300ms:                                       ;RETARDO 300 ms
+0055   2052           00118         call    ret100ms
+0056   2052           00119         call    ret100ms
+0057   2052           00120         call    ret100ms
+0058   0008           00121         return
+                      00122 
+0059                  00123 ret600ms:                                       ;RETARDO 600 ms
+0059   2055           00124         call    ret300ms
+005A   2055           00125         call    ret300ms
+005B   0008           00126         return
+                      00127 
+                      00128 
+                      00129 
+                      00130 
+                      00131 
+                      00132 
+                      00133 
+                      00134 
+                      00135 
+                      00136 
+                      00137 
+                      00138 
+Warning[205]: Found directive in column 1. (include)
+                      00028 include<lcd.asm>
+                      00001 ;.......................................................................
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE 11
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00002 ;NOMBRE DEL ARCHIVO:LCD.ASM
+                      00003 ;.......................................................................
+                      00004 ;***********************************************************************
+                      00005 
+                      00006         cblock
+  00000026            00007                 CHAR            ;ubicación del caracter
+  00000027            00008                 TEMP            ;almacenamiento temporal
+  00000028            00009                 NumCadena       ;número de la cadena 
+  00000029            00010                 indice  
+  0000002A            00011                 W_temp
+                      00012         endc
+                      00013 
+  00000008            00014 DATOS   EQU     PORTD           ;lineas de datos = portD
+  00000008            00015 CNTRL   EQU     PORTD           ;lineas de control = portD
+                      00016 
+  00000001            00017 E       EQU     1               ;linea de control E = bit1
+  00000002            00018 RW      EQU     2               ;linea de control RW = bit2
+  00000003            00019 RS      EQU     3               ;linea de control RS = bit3
+                      00020 
+  0000000F            00021 DISP_ON_CURSOR_BLINK    EQU     0FH     ;Display on, cursor on,blink
+  0000000C            00022 DISP_ON_NOCURSOR                EQU     0CH     ;Display on, cursor off
+  00000001            00023 DISP_CLEAR                      EQU     01H     ;Aclarar display
+  00000008            00024 DISP_OFF                        EQU     08H             ;apaga el display
+  000000C0            00025 DISP_LINEA2                     EQU     0C0H            ;segunda linea
+  00000002            00026 DISP_RETURN_HOME                EQU     02H
+                      00027 
+  00000010            00028 CURSOR_LEFT                     EQU     10H     ; Cursor a la izquierda
+  00000014            00029 CURSOR_RIGHT                    EQU     14H     ; Cursor a la derecha
+                      00030 
+  00000018            00031 DISPLAY_LEFT                    EQU     18H     ; DISPLAY a la izquierda
+  0000001C            00032 DISPLAY_RIGHT                   EQU     1CH     ; DISPLAY a la derecha
+                      00033 
+  00000000            00034 off                                     EQU  0
+  00000001            00035 on                                      EQU  1
+                      00036 
+                      00037 ;*******************************************************************
+                      00038 ;EnviaCarLCD - Envia un caracter a la pantalla LCD                 *
+                      00039 ;Esta rutina separa el caracter entre el nibble superior e inferior*
+                      00040 ;y los envia a la pantalla LCD, nibble mas alto primero            * 
+                      00041 ;*******************************************************************
+005C                  00042 EnviaCarLCD
+005C   00AA           00043         movwf   W_temp          ;almacena temporal W
+005D   00A6           00044         movwf   CHAR            ;W contiene caracter a ser enviado
+005E   2086           00045         call    TestBusyLCD     ;Esperar que LCD este listo
+005F   0826           00046         movf    CHAR,w          
+0060   39F0           00047         andlw   0xF0            ;Obtener el nibble superior
+0061   0088           00048         movwf   DATOS           ;Enviar datos al LCD
+0062   1108           00049         bcf     CNTRL,RW        ;Poner al LCD en modo lectura
+0063   1588           00050         bsf     CNTRL,RS        ;Poner al LCD en modo de datos
+0064   0000           00051         nop
+0065   1488           00052         bsf     CNTRL,E         ;Conmutar E
+0066   0000           00053         nop
+0067   1088           00054         bcf     CNTRL,E
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE 12
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0068   0E26           00055         swapf   CHAR,w
+0069   39F0           00056         andlw   0xF0            ;Obtener el nibble inferior
+006A   0088           00057         movwf   DATOS           ;Enviar datos al LCD
+006B   1108           00058         bcf     CNTRL,RW        ;Poner al LCD en modo lectura
+006C   1588           00059         bsf     CNTRL,RS        ;Poner al LCD en modo de datos
+006D   0000           00060         nop
+006E   1488           00061         bsf     CNTRL,E         ;Conmutar E
+006F   0000           00062         nop
+0070   1088           00063         bcf     CNTRL,E
+0071   082A           00064         movf    W_temp,W        ;restaura W
+0072   0008           00065         return
+                      00066 
+                      00067 ;*******************************************************************
+                      00068 ;*EnviaCmdLCD - Envia comando a la pantalla LCD                       *
+                      00069 ;*Esta rutina separa el comando en nibble superior y nibble        *
+                      00070 ;*inferior y los envia a la pantalla LCD, nibble mas alto primero  *
+                      00071 ;*******************************************************************
+0073                  00072 EnviaCmdLCD
+0073   00A6           00073         movwf   CHAR            ;Caracter a ser enviado esta en reg. W
+0074   2086           00074         call    TestBusyLCD     ;esperar LCD listo
+0075   0826           00075         movf    CHAR,w          
+0076   39F0           00076         andlw   0xF0            ;Obtener nibble superior
+0077   0088           00077         movwf   DATOS           ;enviar dato al LCD
+0078   1108           00078         bcf     CNTRL,RW        ;Poner LCD en modo lectura
+0079   1188           00079         bcf     CNTRL,RS        ;Poner LCD en modo comando
+007A   0000           00080         nop
+007B   1488           00081         bsf     CNTRL,E         ;conmutar E para LCD
+007C   0000           00082         nop
+007D   1088           00083         bcf     CNTRL,E
+007E   0E26           00084         swapf   CHAR,w
+007F   39F0           00085         andlw   0xF0            ;Obtener nibble inferior
+0080   0088           00086         movwf   DATOS           ;enviar dato al LCD
+0081   0000           00087         nop
+0082   1488           00088         bsf     CNTRL,E         ;conmutar E para LCD
+0083   0000           00089         nop
+0084   1088           00090         bcf     CNTRL,E
+0085   0008           00091         return
+                      00092 
+                      00093 ;*******************************************************************
+                      00094 ;* Esta rutina chequea el flag de busy de la pantalla LCD,         *
+                      00095 ;* retorna cuando no esta ocupado                                  *
+                      00096 ;* Afecta:                                                         *
+                      00097 ;*      TEMP - retorna con busy/address                            *
+                      00098 ;*******************************************************************
+0086                  00099 TestBusyLCD
+                      00100         banco   1
+                          M         if 1 == 0
+                          M                 bcf     STATUS,RP0
+                          M                 bcf     STATUS,RP1
+                          M         endif
+                          M         if 1 == 1
+0086   1683               M                 bsf     STATUS,RP0
+0087   1303               M                 bcf     STATUS,RP1
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE 13
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                          M         endif
+                          M         if 1 == 2
+                          M                 bcf     STATUS,RP0
+                          M                 bsf     STATUS,RP1
+                          M         endif
+                          M         if 1 == 3
+                          M                 bsf     STATUS,RP0
+                          M                 bsf     STATUS,RP1
+                          M         endif
+0088   30F0           00101         movlw   b'11110000'     ;Seleccionar DATOS[4..7]
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0089   0088           00102         movwf   TRISD
+                      00103         banco   0
+                          M         if 0 == 0
+008A   1283               M                 bcf     STATUS,RP0
+008B   1303               M                 bcf     STATUS,RP1
+                          M         endif
+                          M         if 0 == 1
+                          M                 bsf     STATUS,RP0
+                          M                 bcf     STATUS,RP1
+                          M         endif
+                          M         if 0 == 2
+                          M                 bcf     STATUS,RP0
+                          M                 bsf     STATUS,RP1
+                          M         endif
+                          M         if 0 == 3
+                          M                 bsf     STATUS,RP0
+                          M                 bsf     STATUS,RP1
+                          M         endif
+008C   1188           00104         bcf     CNTRL,RS        ;Porne LCD en modo comando
+008D   1508           00105         bsf     CNTRL,RW        ;prepara para leer flag de busy
+008E   0000           00106         nop
+008F   1488           00107         bsf     CNTRL,E         ;E='1'
+0090   0000           00108         nop
+0091   0808           00109         movf    DATOS,W         ;Lee flag de busy del nibble sup., direccion DDRam
+0092   1088           00110         bcf     CNTRL,E         ;conmuta E para tomar nibble inferior
+0093   39F0           00111         andlw   0F0h            ;Enmascara el nibble
+0094   00A7           00112         movwf   TEMP            ;lo almacena
+0095   0000           00113         nop
+0096   1488           00114         bsf     CNTRL,E
+0097   0000           00115         nop
+0098   0E08           00116         swapf   DATOS,w         ;Lee flag de busy del nibble inf., direccion DDRam
+0099   1088           00117         bcf     CNTRL,E         ;Poner E='0'
+009A   390F           00118         andlw   00Fh            ;Enmascara nibble superior
+009B   04A7           00119         iorwf   TEMP,1          ;Combina nibbles
+009C   1BA7           00120         btfsc   TEMP,7          ;Chequea flag de busy, alto = ocupado
+009D   2886           00121         goto    TestBusyLCD     ;Si esta ocupado, chequear nueamente
+009E   1108           00122         bcf     CNTRL,RW        
+                      00123         banco   1
+                          M         if 1 == 0
+                          M                 bcf     STATUS,RP0
+                          M                 bcf     STATUS,RP1
+                          M         endif
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE 14
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                          M         if 1 == 1
+009F   1683               M                 bsf     STATUS,RP0
+00A0   1303               M                 bcf     STATUS,RP1
+                          M         endif
+                          M         if 1 == 2
+                          M                 bcf     STATUS,RP0
+                          M                 bsf     STATUS,RP1
+                          M         endif
+                          M         if 1 == 3
+                          M                 bsf     STATUS,RP0
+                          M                 bsf     STATUS,RP1
+                          M         endif
+00A1   3000           00124         movlw   0x00            ;poner DATOS como salidas
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00A2   0088           00125         movwf   TRISD
+                      00126         banco   0
+                          M         if 0 == 0
+00A3   1283               M                 bcf     STATUS,RP0
+00A4   1303               M                 bcf     STATUS,RP1
+                          M         endif
+                          M         if 0 == 1
+                          M                 bsf     STATUS,RP0
+                          M                 bcf     STATUS,RP1
+                          M         endif
+                          M         if 0 == 2
+                          M                 bcf     STATUS,RP0
+                          M                 bsf     STATUS,RP1
+                          M         endif
+                          M         if 0 == 3
+                          M                 bsf     STATUS,RP0
+                          M                 bsf     STATUS,RP1
+                          M         endif
+00A5   0008           00127         return
+                      00128 
+                      00129 ;**************************************************************
+                      00130 ;* Esta rutina inicializa la pantalla LCD                     *
+                      00131 ;*  Afecta:                                                   *
+                      00132 ;*      TEMP - retornado con busy/address                     *
+                      00133 ;**************************************************************
+00A6                  00134 Inicio_lcd
+                      00135         banco   0
+                          M         if 0 == 0
+00A6   1283               M                 bcf     STATUS,RP0
+00A7   1303               M                 bcf     STATUS,RP1
+                          M         endif
+                          M         if 0 == 1
+                          M                 bsf     STATUS,RP0
+                          M                 bcf     STATUS,RP1
+                          M         endif
+                          M         if 0 == 2
+                          M                 bcf     STATUS,RP0
+                          M                 bsf     STATUS,RP1
+                          M         endif
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE 15
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                          M         if 0 == 3
+                          M                 bsf     STATUS,RP0
+                          M                 bsf     STATUS,RP1
+                          M         endif
+00A8   1088           00136         bcf     CNTRL,E         ; aclara lineas de control
+00A9   1108           00137         bcf     CNTRL,RW
+00AA   1188           00138         bcf     CNTRL,RS
+00AB   300F           00139         movlw   0x0F            ;aclara lineas de datos
+00AC   0088           00140         movwf   DATOS
+                      00141 ;Configurar puertos DATOS[4..7] y CNTRL[1..3] como salidas
+                      00142         banco   1
+                          M         if 1 == 0
+                          M                 bcf     STATUS,RP0
+                          M                 bcf     STATUS,RP1
+                          M         endif
+                          M         if 1 == 1
+00AD   1683               M                 bsf     STATUS,RP0
+00AE   1303               M                 bcf     STATUS,RP1
+                          M         endif
+                          M         if 1 == 2
+                          M                 bcf     STATUS,RP0
+                          M                 bsf     STATUS,RP1
+                          M         endif
+                          M         if 1 == 3
+                          M                 bsf     STATUS,RP0
+                          M                 bsf     STATUS,RP1
+                          M         endif
+00AF   300F           00143         movlw   B'00001111'     ;4 bits mas altos de DATOS 
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00B0   0088           00144         movwf   TRISD
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00B1   1088           00145         bcf     TRISD,E         ;bits de control como salidas
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00B2   1108           00146         bcf     TRISD,RW
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00B3   1188           00147         bcf     TRISD,RS
+                      00148         banco   0
+                          M         if 0 == 0
+00B4   1283               M                 bcf     STATUS,RP0
+00B5   1303               M                 bcf     STATUS,RP1
+                          M         endif
+                          M         if 0 == 1
+                          M                 bsf     STATUS,RP0
+                          M                 bcf     STATUS,RP1
+                          M         endif
+                          M         if 0 == 2
+                          M                 bcf     STATUS,RP0
+                          M                 bsf     STATUS,RP1
+                          M         endif
+                          M         if 0 == 3
+                          M                 bsf     STATUS,RP0
+                          M                 bsf     STATUS,RP1
+                          M         endif
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE 16
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00149 
+                      00150 ;Inicializar la pantalla LCD
+                      00151 
+00B6   3050           00152         movlw   t15.4ms         ;guarda de 15 ms
+00B7   00A5           00153         movwf   contador_2
+00B8   2047           00154         call    retardo
+00B9   3030           00155         movlw   B'00110000'     ;Configurar LCD para interfaz de 4 bits
+00BA   0088           00156         movwf   DATOS
+00BB   0000           00157         nop
+00BC   1488           00158         bsf     CNTRL,E         ;conmutar E para LCD
+00BD   0000           00159         nop
+00BE   1088           00160         bcf     CNTRL,E
+00BF   3018           00161         movlw   t4.6ms
+00C0   00A5           00162         movwf   contador_2
+00C1   2047           00163         call    retardo
+00C2   3030           00164         movlw   B'00110000'     ;Funcion escoger 2 lineas
+00C3   0088           00165         movwf   DATOS           ;de caracteres de 5x7 bits 
+00C4   0000           00166         nop
+00C5   1488           00167         bsf     CNTRL,E         ;conmutar E para LCD
+00C6   0000           00168         nop
+00C7   1088           00169         bcf     CNTRL,E
+00C8   3030           00170         movlw   B'00110000'     ;Parte de la secuencia de encendido
+00C9   0088           00171         movwf   DATOS            
+00CA   0000           00172         nop
+00CB   1488           00173         bsf     CNTRL,E         ;conmutar E para LCD
+00CC   0000           00174         nop
+00CD   1088           00175         bcf     CNTRL,E
+00CE   3001           00176         movlw   t200us          ;retardo
+00CF   00A5           00177         movwf   contador_2
+00D0   2047           00178         call    retardo
+00D1   3020           00179         movlw   B'00100000'     ;Configurar modo 4 bits
+00D2   0088           00180         movwf   DATOS           ;
+00D3   0000           00181         nop
+00D4   1488           00182         bsf     CNTRL,E         ;conmutar E para LCD
+00D5   0000           00183         nop
+00D6   1088           00184         bcf     CNTRL,E
+                      00185 
+                      00186 ;El flag de ocupado estaria valido despues de este punto
+00D7   3028           00187         movlw   B'00101000'     ;Interfaz de 4 bits, 2 lineas
+00D8   2073           00188         call    EnviaCmdLCD             ; de caracteres de 5x7
+00D9   300F           00189         movlw   DISP_ON_CURSOR_BLINK     ;Display on, cursor on,blink
+00DA   2073           00190         call    EnviaCmdLCD
+00DB   3001           00191         movlw   DISP_CLEAR      ;Aclarar display
+00DC   2073           00192         call    EnviaCmdLCD
+00DD   3006           00193         movlw   B'00000110'     ;Poner modo incremental, sin desplazamiento
+00DE   2073           00194         call    EnviaCmdLCD             
+00DF   3080           00195         movlw   B'10000000'     ;Address DDRam upper left
+00E0   2073           00196         call    EnviaCmdLCD
+00E1   0008           00197         return
+                      00198 
+                      00199 
+Warning[205]: Found directive in column 1. (include)
+                      00029 include<rs232_16f877.asm>
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE 17
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 ;*******************************************************************************
+                      00002 ;-------------------------------------------------------------------------------
+                      00003 ;===============================================================================
+                      00004 ;Nombre de archivo:RS232_16f877.asm
+                      00005 ;Permite realizar las tareas de control de la transmisión serie asíncrona según
+                      00006 ;la norma RS-232.
+                      00007 ;
+                      00008 ;Hecho por: Ing. Carlos E. MEndiola Mogollón
+                      00009 ;Empresa: Electronic-digital (CM)
+                      00010 ;E-mail: Electronic_digital20@hotmail.com
+                      00011 ;Dirección Web:www.electronic-digital.blogspot.com
+                      00012 
+                      00013 ;Historial:
+                      00014 ;-Velocidad de transmisión: 9600 baudios.
+                      00015 ;-Tasa de transmisión bit a bit: 104us.
+                      00016 ;-Bit Start a nivel bajo.
+                      00017 ;-8 bits de dato.
+                      00018 ;-Sin paridad.
+                      00019 ;===============================================================================
+                      00020 ;-------------------------------------------------------------------------------
+                      00021         CBLOCK
+  0000002B            00022         RS232_ContadorBits
+  0000002C            00023         RS232_Dato
+  0000002D            00024     Ret_micro
+                      00025         ENDC
+                      00026 
+                      00027 #DEFINE  RS232_Entrada  PORTC,7         ; Pin rc7 como entrada=Rx
+                      00028 #DEFINE  RS232_Salida   PORTC,6         ; Pin rc6 como salida =Tx
+                      00029 
+                      00030 ;*********************************************************************
+                      00031 ;---------------------------------------------------------------------
+                      00032 ; Configura las líneas de salida y entrada del microcontrolador.
+                      00033 
+00E2                  00034 RS232_Inicializa
+00E2   1683           00035         bsf     STATUS,RP0
+00E3   1787           00036         bsf     RS232_Entrada           ;configura como entrada.
+00E4   1307           00037         bcf     RS232_Salida            ;configura como salida.
+00E5   1283           00038         bcf     STATUS,RP0
+00E6   0008           00039         return
+                      00040 
+                      00041 
+                      00042 
+                      00043 ;*********************************************************************
+                      00044 ;---------------------------------------------------------------------
+                      00045 ; En el registro de trabajo W se almacena el  byte leído.
+                      00046 
+00E7                  00047 RS232_LeeDato
+00E7   3008           00048         movlw   d'8'                             ; Número de bits a recibir.
+00E8   00AB           00049         movwf   RS232_ContadorBits
+00E9                  00050 RS232_EsperaBitStart
+00E9   1B87           00051         btfsc   RS232_Entrada            ; Entrada=0?
+00EA   28E9           00052         goto    RS232_EsperaBitStart ; No --> espera el nivel bajo.
+00EB   210C           00053         call    Retardo_100micros        ; Si --> El primer bit se debe leer a un tiempo igual 
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE 18
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00EC   210F           00054         call    Retardo_50micros         ; a una vez y media el periodo de transmisión.
+00ED                  00055 RS232_LeeBit
+00ED   1003           00056         bcf             STATUS,C                         ; C=0           
+00EE   1B87           00057         btfsc   RS232_Entrada            ; Entrada=0?
+00EF   1403           00058         bsf             STATUS,C                         ; No --> C=1
+00F0   0CAC           00059         rrf             RS232_Dato,F             ; Si --> Rota bit derecha en el registro.
+00F1   210C           00060         call    Retardo_100micros        ; Los siguientes bits se lee 100us más tarde.
+00F2   0BAB           00061         decfsz  RS232_ContadorBits,F ; Comprueba que es el último bit.
+00F3   28ED           00062         goto    RS232_LeeBit             ; Si no es el último bit pasa a leer el siguiente.
+00F4   2109           00063         call    Retardo_200micros        ; Espera un tiempo igual al los 2 bits de Stop.
+00F5   082C           00064         movf    RS232_Dato,W             ; El resultado se almacena en el registro W.
+00F6   0008           00065         return
+                      00066 
+                      00067 
+                      00068 ;*********************************************************************
+                      00069 ;---------------------------------------------------------------------  
+                      00070 ;En el registo W esta el dato a enviar.
+                      00071 
+00F7                  00072 RS232_EnviaNumero                                       ; Envía el código ASCII de un número.
+00F7   3E30           00073         addlw   '0'                                             ; Lo pasa a código ASCII sumándole el AS
+                            CII del 0.
+00F8                  00074 RS232_EnviaDato
+00F8   00AC           00075         movwf   RS232_Dato                              ; Guarda el contenido del byte a transmitir.
+00F9   3008           00076         movlw   d'8'                                    ; Este es el número de bits a transmitir.
+00FA   00AB           00077         movwf   RS232_ContadorBits
+00FB   1307           00078         bcf             RS232_Salida                    ; Bit de Start.
+00FC   210C           00079         call    Retardo_100micros
+00FD                  00080 RS232_EnviaBit                                          ; Comienza a enviar datos.
+00FD   0CAC           00081         rrf             RS232_Dato,F                    ; Lleva el bit que se quiere enviar al Carry par
+                            a
+00FE   1C03           00082         btfss   STATUS,C                                ; deducir su valor. ¿Es un "1" el bit a transmit
+                            ir?
+00FF   2902           00083         goto    RS232_EnviaCero                 ; No, pues envía un "0".
+0100                  00084 RS232_EnviaUno
+0100   1707           00085         bsf             RS232_Salida                    ; Transmite un "1".
+0101   2903           00086         goto    RS232_FinEnviaBit
+0102                  00087 RS232_EnviaCero
+0102   1307           00088         bcf             RS232_Salida                    ; Transmite un "0".
+0103                  00089 RS232_FinEnviaBit
+0103   210C           00090         call    Retardo_100micros               ; Este es el tiempo que estará en alto o bajo.
+0104   0BAB           00091         decfsz  RS232_ContadorBits,F    ; Comprueba que es el último bit.
+0105   28FD           00092         goto    RS232_EnviaBit                  ; Como no es el último bit repite la operación.
+0106   1707           00093         bsf             RS232_Salida                    ; Envía dos bits de Stop.
+0107   2109           00094         call    Retardo_200micros
+0108   0008           00095         return
+                      00096         
+                      00097 ;-------------------------------------------------
+                      00098 ;para un cristal de 20Mhz.
+                      00099 ;-------------------------------------------------
+0109                  00100 Retardo_200micros
+0109   210C           00101     call   Retardo_100micros
+010A   210C           00102     call   Retardo_100micros
+010B   0008           00103     return
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE 19
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+010C                  00104 Retardo_100micros
+010C   210F           00105     call   Retardo_50micros
+010D   210F           00106     call   Retardo_50micros 
+010E   0008           00107     return
+010F                  00108 Retardo_50micros
+010F   3053           00109     movlw  .83
+0110   00AD           00110     movwf  Ret_micro
+0111                  00111 bucle_micro
+Message[305]: Using default destination of 1 (file).
+0111   0BAD           00112     decfsz Ret_micro
+0112   2911           00113     goto   bucle_micro
+0113   0008           00114     return
+Warning[205]: Found directive in column 1. (end)
+                      00030 end
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE 20
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ACKDT                             00000005
+ACKEN                             00000004
+ACKSTAT                           00000006
+ADCON0                            0000001F
+ADCON1                            0000009F
+ADCS0                             00000006
+ADCS1                             00000007
+ADCS2                             00000006
+ADDEN                             00000003
+ADFM                              00000007
+ADIE                              00000006
+ADIF                              00000006
+ADON                              00000000
+ADRESH                            0000001E
+ADRESL                            0000009E
+BCLIE                             00000003
+BCLIF                             00000003
+BF                                00000000
+BRGH                              00000002
+C                                 00000000
+C1INV                             00000004
+C1OUT                             00000006
+C2INV                             00000005
+C2OUT                             00000007
+CCP1CON                           00000017
+CCP1IE                            00000002
+CCP1IF                            00000002
+CCP1M0                            00000000
+CCP1M1                            00000001
+CCP1M2                            00000002
+CCP1M3                            00000003
+CCP1X                             00000005
+CCP1Y                             00000004
+CCP2CON                           0000001D
+CCP2IE                            00000000
+CCP2IF                            00000000
+CCP2M0                            00000000
+CCP2M1                            00000001
+CCP2M2                            00000002
+CCP2M3                            00000003
+CCP2X                             00000005
+CCP2Y                             00000004
+CCPR1                             00000015
+CCPR1H                            00000016
+CCPR1L                            00000015
+CCPR2                             0000001B
+CCPR2H                            0000001C
+CCPR2L                            0000001B
+CHAR                              00000026
+CHS0                              00000003
+CHS1                              00000004
+CHS2                              00000005
+CIS                               00000003
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE 21
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+CKE                               00000006
+CKP                               00000004
+CM0                               00000000
+CM1                               00000001
+CM2                               00000002
+CMCON                             0000009C
+CMIE                              00000006
+CMIF                              00000006
+CNTRL                             00000008
+CREN                              00000004
+CSRC                              00000007
+CURSOR_LEFT                       00000010
+CURSOR_RIGHT                      00000014
+CVR0                              00000000
+CVR1                              00000001
+CVR2                              00000002
+CVR3                              00000003
+CVRCON                            0000009D
+CVREN                             00000007
+CVROE                             00000006
+CVRR                              00000005
+Cont_1                            00000020
+Cont_2                            00000021
+Cont_3                            00000022
+Cont_4                            00000023
+D                                 00000005
+DATA_ADDRESS                      00000005
+DATOS                             00000008
+DC                                00000001
+DISPLAY_LEFT                      00000018
+DISPLAY_RIGHT                     0000001C
+DISP_CLEAR                        00000001
+DISP_LINEA2                       000000C0
+DISP_OFF                          00000008
+DISP_ON_CURSOR_BLINK              0000000F
+DISP_ON_NOCURSOR                  0000000C
+DISP_RETURN_HOME                  00000002
+D_A                               00000005
+D_NOT_A                           00000005
+DisplayAnodoComun                 0000003C
+DisplayCatodoComun                00000031
+E                                 00000001
+EEADR                             0000010D
+EEADRH                            0000010F
+EECON1                            0000018C
+EECON2                            0000018D
+EEDATA                            0000010C
+EEDATH                            0000010E
+EEIE                              00000004
+EEIF                              00000004
+EEPGD                             00000007
+EnviaCarLCD                       0000005C
+EnviaCmdLCD                       00000073
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE 22
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+F                                 00000001
+FERR                              00000002
+FSR                               00000004
+GCEN                              00000007
+GIE                               00000007
+GO                                00000002
+GO_DONE                           00000002
+GO_NOT_DONE                       00000002
+I2C_DATA                          00000005
+I2C_READ                          00000002
+I2C_START                         00000003
+I2C_STOP                          00000004
+IBF                               00000007
+IBOV                              00000005
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+InicioLcd                         
+InicioRS232                       
+InicioTeclado                     
+Inicio_lcd                        000000A6
+Milisegundo                       00000012
+NOT_A                             00000005
+NOT_ADDRESS                       00000005
+NOT_BO                            00000000
+NOT_BOR                           00000000
+NOT_DONE                          00000002
+NOT_PD                            00000003
+NOT_POR                           00000001
+NOT_RBPU                          00000007
+NOT_RC8                           00000006
+NOT_T1SYNC                        00000002
+NOT_TO                            00000004
+NOT_TX8                           00000006
+NOT_W                             00000002
+NOT_WRITE                         00000002
+NumCadena                         00000028
+OBF                               00000006
+OERR                              00000001
+OPTION_REG                        00000081
+P                                 00000004
+PCFG0                             00000000
+PCFG1                             00000001
+PCFG2                             00000002
+PCFG3                             00000003
+PCL                               00000002
+PCLATH                            0000000A
+PCON                              0000008E
+PEIE                              00000006
+PEN                               00000002
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE 23
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PIE1                              0000008C
+PIE2                              0000008D
+PIR1                              0000000C
+PIR2                              0000000D
+PORTA                             00000005
+PORTB                             00000006
+PORTC                             00000007
+PORTD                             00000008
+PORTE                             00000009
+PR2                               00000092
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+PSPIE                             00000007
+PSPIF                             00000007
+PSPMODE                           00000004
+R                                 00000002
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RA5                               00000005
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RC0                               00000000
+RC1                               00000001
+RC2                               00000002
+RC3                               00000003
+RC4                               00000004
+RC5                               00000005
+RC6                               00000006
+RC7                               00000007
+RC8_9                             00000006
+RC9                               00000006
+RCD8                              00000000
+RCEN                              00000003
+RCIE                              00000005
+RCIF                              00000005
+RCREG                             0000001A
+RCSTA                             00000018
+RD                                00000000
+RD0                               00000000
+RD1                               00000001
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE 24
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RD2                               00000002
+RD3                               00000003
+RD4                               00000004
+RD5                               00000005
+RD6                               00000006
+RD7                               00000007
+RE0                               00000000
+RE1                               00000001
+RE2                               00000002
+READ_WRITE                        00000002
+RP0                               00000005
+RP1                               00000006
+RS                                00000003
+RS232_ContadorBits                0000002B
+RS232_Dato                        0000002C
+RS232_Entrada                     PORTC,7
+RS232_EnviaBit                    000000FD
+RS232_EnviaCero                   00000102
+RS232_EnviaDato                   000000F8
+RS232_EnviaNumero                 000000F7
+RS232_EnviaUno                    00000100
+RS232_EsperaBitStart              000000E9
+RS232_FinEnviaBit                 00000103
+RS232_Inicializa                  000000E2
+RS232_LeeBit                      000000ED
+RS232_LeeDato                     000000E7
+RS232_Salida                      PORTC,6
+RSEN                              00000001
+RW                                00000002
+RX9                               00000006
+RX9D                              00000000
+R_NOT_W                           00000002
+R_W                               00000002
+Repite                            00000001
+Ret_micro                         0000002D
+Retardo_100micros                 0000010C
+Retardo_200micros                 00000109
+Retardo_50micros                  0000010F
+S                                 00000003
+SEN                               00000000
+SMP                               00000007
+SPBRG                             00000099
+SPEN                              00000007
+SREN                              00000005
+SSPADD                            00000093
+SSPBUF                            00000013
+SSPCON                            00000014
+SSPCON2                           00000091
+SSPEN                             00000005
+SSPIE                             00000003
+SSPIF                             00000003
+SSPM0                             00000000
+SSPM1                             00000001
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE 25
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+SSPM2                             00000002
+SSPM3                             00000003
+SSPOV                             00000006
+SSPSTAT                           00000094
+STATUS                            00000003
+SYNC                              00000004
+Segundo                           00000020
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000010
+T1INSYNC                          00000002
+T1OSCEN                           00000003
+T1SYNC                            00000002
+T2CKPS0                           00000000
+T2CKPS1                           00000001
+T2CON                             00000012
+TEMP                              00000027
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TMR1                              0000000E
+TMR1CS                            00000001
+TMR1H                             0000000F
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1L                             0000000E
+TMR1ON                            00000000
+TMR2                              00000011
+TMR2IE                            00000001
+TMR2IF                            00000001
+TMR2ON                            00000002
+TOUTPS0                           00000003
+TOUTPS1                           00000004
+TOUTPS2                           00000005
+TOUTPS3                           00000006
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISA5                            00000005
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE 26
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TRISB6                            00000006
+TRISB7                            00000007
+TRISC                             00000087
+TRISC0                            00000000
+TRISC1                            00000001
+TRISC2                            00000002
+TRISC3                            00000003
+TRISC4                            00000004
+TRISC5                            00000005
+TRISC6                            00000006
+TRISC7                            00000007
+TRISD                             00000088
+TRISD0                            00000000
+TRISD1                            00000001
+TRISD2                            00000002
+TRISD3                            00000003
+TRISD4                            00000004
+TRISD5                            00000005
+TRISD6                            00000006
+TRISD7                            00000007
+TRISE                             00000089
+TRISE0                            00000000
+TRISE1                            00000001
+TRISE2                            00000002
+TRMT                              00000001
+TX8_9                             00000006
+TX9                               00000006
+TX9D                              00000000
+TXD8                              00000000
+TXEN                              00000005
+TXIE                              00000004
+TXIF                              00000004
+TXREG                             00000019
+TXSTA                             00000098
+TestBusyLCD                       00000086
+UA                                00000001
+W                                 00000000
+WCOL                              00000007
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+W_temp                            0000002A
+Z                                 00000002
+_BODEN_OFF                        00003FBF
+_BODEN_ON                         00003FFF
+_BOREN_OFF                        00003FBF
+_BOREN_ON                         00003FFF
+_CONFIG                           00002007
+_CPD_OFF                          00003FFF
+_CPD_ON                           00003EFF
+_CP_ALL                           00001FFF
+_CP_OFF                           00003FFF
+_CP_ON                            00001FFF
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE 27
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_DEBUG_OFF                        00003FFF
+_DEBUG_ON                         000037FF
+_DEVID1                           00002006
+_FOSC_EXTRC                       00003FFF
+_FOSC_HS                          00003FFE
+_FOSC_LP                          00003FFC
+_FOSC_XT                          00003FFD
+_HS_OSC                           00003FFE
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_LP_OSC                           00003FFC
+_LVP_OFF                          00003F7F
+_LVP_ON                           00003FFF
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDTE_OFF                         00003FFB
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_WRT_1FOURTH                      00003BFF
+_WRT_256                          00003DFF
+_WRT_HALF                         000039FF
+_WRT_OFF                          00003FFF
+_XT_OSC                           00003FFD
+__16F877A                         00000001
+__DEBUG                           1
+banco                             
+borralcd                          
+bucle_micro                       00000111
+contador_1                        00000024
+contador_2                        00000025
+csi                               
+csir                              
+csmai                             
+csme                              
+csmei                             
+csni                              
+csnir                             
+cursor                            
+dcsi                              
+dcsni                             
+desplazaderecha                   
+desplazaizquierda                 
+enter                             
+entrada                           00000001
+indice                            00000029
+mensaje                           
+milisegundo                       
+mover                             
+movregistro                       
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE 28
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+off                               00000000
+on                                00000001
+pagina                            
+ponerc                            
+porta                             00000005
+portb                             00000006
+portc                             00000007
+portd                             00000008
+porte                             00000009
+putv                              
+ret                               00000048
+ret100ms                          00000052
+ret300ms                          00000055
+ret50ms                           0000004D
+ret600ms                          00000059
+retardo                           00000047
+salida                            00000000
+salta                             
+segundo                           
+t0                                00000082
+t15.4ms                           00000050
+t200us                            00000001
+t4.6ms                            00000018
+tab_digito                        
+tabla                             
+trisb                             00000086
+trisc                             00000087
+trisd                             00000088
+xx                                00000013
+xx1                               00000015
+xx2                               00000017
+xxx                               00000021
+xxx1                              00000023
+xxx2                              00000025
+xxx3                              00000027
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0040 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0080 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+00C0 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0100 : XXXXXXXXXXXXXXXX XXXX------------ ---------------- ----------------
+2000 : -------X-------- ---------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:   276
+Program Memory Words Free:  7916
+
+MPASM  5.51                        EJEM02.ASM   6-21-2014  22:15:31         PAGE 29
+
+
+
+
+
+
+Errors   :     0
+Warnings :    29 reported,     0 suppressed
+Messages :    14 reported,     0 suppressed
+
+

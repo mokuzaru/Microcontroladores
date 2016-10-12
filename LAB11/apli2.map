@@ -1,0 +1,150 @@
+MPLINK 4.49, Linker
+Linker Map File - Created Sat May 24 12:59:29 2014
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_1       code   0x000000    program   0x00038e
+     .config_2007_APLI2.O       code   0x002007    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x0001c6      
+                            0x002007    0x002007      
+            456 out of 8454 program addresses used, program memory utilization is 5%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   Borra1   0x0000a1    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                   Borra2   0x0000a0    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                    Dato1   0x0000a5    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                   Dato10   0x0000b7    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                   Dato11   0x0000b9    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                   Dato12   0x0000bb    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                   Dato13   0x0000bd    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                   Dato14   0x0000bf    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                   Dato15   0x0000c1    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                   Dato16   0x0000c3    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                    Dato2   0x0000a7    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                    Dato3   0x0000a9    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                    Dato4   0x0000ab    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                    Dato5   0x0000ad    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                    Dato6   0x0000af    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                    Dato7   0x0000b1    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                    Dato8   0x0000b3    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                    Dato9   0x0000b5    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+               Diferentes   0x000064    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+        DisplayAnodoComun   0x0000ef    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+       DisplayCatodoComun   0x0000e4    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                   Enter1   0x000066    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                   Enter2   0x000020    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+              EnviaCarLCD   0x00010f    program     static D:\Informes V CICLO\Microcontroladores\LAB11\lcd.asm
+              EnviaCmdLCD   0x000126    program     static D:\Informes V CICLO\Microcontroladores\LAB11\lcd.asm
+                 Guardado   0x000062    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+               Inicio_lcd   0x000159    program     static D:\Informes V CICLO\Microcontroladores\LAB11\lcd.asm
+              Milisegundo   0x0000c5    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+           RS232_EnviaBit   0x0001b0    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+          RS232_EnviaCero   0x0001b5    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+          RS232_EnviaDato   0x0001ab    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+        RS232_EnviaNumero   0x0001aa    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+           RS232_EnviaUno   0x0001b3    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+     RS232_EsperaBitStart   0x00019c    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+        RS232_FinEnviaBit   0x0001b6    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+         RS232_Inicializa   0x000195    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+             RS232_LeeBit   0x0001a0    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+            RS232_LeeDato   0x00019a    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+                  Regresa   0x00001c    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                   Repite   0x000017    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+        Retardo_100micros   0x0001bf    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+        Retardo_200micros   0x0001bc    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+         Retardo_50micros   0x0001c2    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+                  Segundo   0x0000d3    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+              TestBusyLCD   0x000139    program     static D:\Informes V CICLO\Microcontroladores\LAB11\lcd.asm
+              bucle_micro   0x0001c4    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+                      ret   0x0000fb    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                 ret100ms   0x000105    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                 ret300ms   0x000108    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                  ret50ms   0x000100    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                 ret600ms   0x00010c    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                  retardo   0x0000fa    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                       xx   0x0000c6    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                      xx1   0x0000c8    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                      xx2   0x0000ca    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                      xxx   0x0000d4    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                     xxx1   0x0000d6    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                     xxx2   0x0000d8    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                     xxx3   0x0000da    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   Repite   0x000017    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                  Regresa   0x00001c    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                   Enter2   0x000020    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                 Guardado   0x000062    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+               Diferentes   0x000064    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                   Enter1   0x000066    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                   Borra2   0x0000a0    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                   Borra1   0x0000a1    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                    Dato1   0x0000a5    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                    Dato2   0x0000a7    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                    Dato3   0x0000a9    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                    Dato4   0x0000ab    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                    Dato5   0x0000ad    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                    Dato6   0x0000af    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                    Dato7   0x0000b1    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                    Dato8   0x0000b3    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                    Dato9   0x0000b5    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                   Dato10   0x0000b7    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                   Dato11   0x0000b9    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                   Dato12   0x0000bb    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                   Dato13   0x0000bd    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                   Dato14   0x0000bf    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                   Dato15   0x0000c1    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+                   Dato16   0x0000c3    program     static D:\Informes V CICLO\Microcontroladores\LAB11\apli2.asm
+              Milisegundo   0x0000c5    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                       xx   0x0000c6    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                      xx1   0x0000c8    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                      xx2   0x0000ca    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                  Segundo   0x0000d3    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                      xxx   0x0000d4    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                     xxx1   0x0000d6    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                     xxx2   0x0000d8    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                     xxx3   0x0000da    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+       DisplayCatodoComun   0x0000e4    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+        DisplayAnodoComun   0x0000ef    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                  retardo   0x0000fa    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                      ret   0x0000fb    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                  ret50ms   0x000100    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                 ret100ms   0x000105    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                 ret300ms   0x000108    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+                 ret600ms   0x00010c    program     static D:\Informes V CICLO\Microcontroladores\LAB11\electronicpic16f877.asm
+              EnviaCarLCD   0x00010f    program     static D:\Informes V CICLO\Microcontroladores\LAB11\lcd.asm
+              EnviaCmdLCD   0x000126    program     static D:\Informes V CICLO\Microcontroladores\LAB11\lcd.asm
+              TestBusyLCD   0x000139    program     static D:\Informes V CICLO\Microcontroladores\LAB11\lcd.asm
+               Inicio_lcd   0x000159    program     static D:\Informes V CICLO\Microcontroladores\LAB11\lcd.asm
+         RS232_Inicializa   0x000195    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+            RS232_LeeDato   0x00019a    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+     RS232_EsperaBitStart   0x00019c    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+             RS232_LeeBit   0x0001a0    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+        RS232_EnviaNumero   0x0001aa    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+          RS232_EnviaDato   0x0001ab    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+           RS232_EnviaBit   0x0001b0    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+           RS232_EnviaUno   0x0001b3    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+          RS232_EnviaCero   0x0001b5    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+        RS232_FinEnviaBit   0x0001b6    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+        Retardo_200micros   0x0001bc    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+        Retardo_100micros   0x0001bf    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+         Retardo_50micros   0x0001c2    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+              bucle_micro   0x0001c4    program     static D:\Informes V CICLO\Microcontroladores\LAB11\rs232_16f877.asm
+
+
