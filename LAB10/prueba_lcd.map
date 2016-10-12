@@ -1,0 +1,168 @@
+MPLINK 4.49, Linker
+Linker Map File - Created Wed May 21 23:39:44 2014
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_1       code   0x000000    program   0x0004a2
+.config_2007_PRUEBA_LCD.O       code   0x002007    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000250      
+                            0x002007    0x002007      
+            594 out of 8454 program addresses used, program memory utilization is 7%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    BRIN1   0x000108    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                   BRIN10   0x0001ce    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                   BRIN11   0x0001e4    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                   BRIN12   0x0001fa    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                   BRIN13   0x000210    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                   BRIN14   0x000226    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                   BRIN15   0x00023c    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    BRIN2   0x00011e    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    BRIN3   0x000134    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    BRIN4   0x00014a    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    BRIN5   0x000160    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    BRIN6   0x000176    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    BRIN7   0x00018c    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    BRIN8   0x0001a2    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    BRIN9   0x0001b8    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+        DisplayAnodoComun   0x00002f    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+       DisplayCatodoComun   0x000024    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+              EnviaCarLCD   0x00004f    program     static D:\Informes V CICLO\Microcontroladores\LAB10\lcd.asm
+              EnviaCmdLCD   0x000066    program     static D:\Informes V CICLO\Microcontroladores\LAB10\lcd.asm
+               Inicio_lcd   0x000099    program     static D:\Informes V CICLO\Microcontroladores\LAB10\lcd.asm
+              Milisegundo   0x000005    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                   Repite   0x000001    program     static D:\Informes V CICLO\Microcontroladores\LAB10\prueba_lcd.asm
+                    SALIR   0x000250    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                  Segundo   0x000013    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                    TEXT1   0x000106    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                   TEXT10   0x0001cc    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                   TEXT11   0x0001e2    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                   TEXT12   0x0001f8    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                   TEXT13   0x00020e    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                   TEXT14   0x000224    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                   TEXT15   0x00023a    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    TEXT2   0x00011c    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    TEXT3   0x000132    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    TEXT4   0x000148    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    TEXT5   0x00015e    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    TEXT6   0x000174    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    TEXT7   0x00018a    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    TEXT8   0x0001a0    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    TEXT9   0x0001b6    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                  TEXTO_1   0x0000d5    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                 TEXTO_10   0x0000f8    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                 TEXTO_11   0x0000fb    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                 TEXTO_12   0x0000fe    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                 TEXTO_13   0x000100    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                 TEXTO_14   0x000102    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                 TEXTO_15   0x000104    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                  TEXTO_2   0x0000e0    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                  TEXTO_3   0x0000e3    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                  TEXTO_4   0x0000e6    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                  TEXTO_5   0x0000e9    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                  TEXTO_6   0x0000ec    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                  TEXTO_7   0x0000ef    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                  TEXTO_8   0x0000f2    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                  TEXTO_9   0x0000f5    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+              TestBusyLCD   0x000079    program     static D:\Informes V CICLO\Microcontroladores\LAB10\lcd.asm
+                      ret   0x00003b    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                 ret100ms   0x000045    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                 ret300ms   0x000048    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                  ret50ms   0x000040    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                 ret600ms   0x00004c    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                  retardo   0x00003a    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                       xx   0x000006    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                      xx1   0x000008    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                      xx2   0x00000a    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                      xxx   0x000014    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                     xxx1   0x000016    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                     xxx2   0x000018    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                     xxx3   0x00001a    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   Repite   0x000001    program     static D:\Informes V CICLO\Microcontroladores\LAB10\prueba_lcd.asm
+              Milisegundo   0x000005    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                       xx   0x000006    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                      xx1   0x000008    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                      xx2   0x00000a    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                  Segundo   0x000013    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                      xxx   0x000014    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                     xxx1   0x000016    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                     xxx2   0x000018    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                     xxx3   0x00001a    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+       DisplayCatodoComun   0x000024    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+        DisplayAnodoComun   0x00002f    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                  retardo   0x00003a    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                      ret   0x00003b    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                  ret50ms   0x000040    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                 ret100ms   0x000045    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                 ret300ms   0x000048    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+                 ret600ms   0x00004c    program     static D:\Informes V CICLO\Microcontroladores\LAB10\electronicpic16f877.asm
+              EnviaCarLCD   0x00004f    program     static D:\Informes V CICLO\Microcontroladores\LAB10\lcd.asm
+              EnviaCmdLCD   0x000066    program     static D:\Informes V CICLO\Microcontroladores\LAB10\lcd.asm
+              TestBusyLCD   0x000079    program     static D:\Informes V CICLO\Microcontroladores\LAB10\lcd.asm
+               Inicio_lcd   0x000099    program     static D:\Informes V CICLO\Microcontroladores\LAB10\lcd.asm
+                  TEXTO_1   0x0000d5    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                  TEXTO_2   0x0000e0    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                  TEXTO_3   0x0000e3    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                  TEXTO_4   0x0000e6    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                  TEXTO_5   0x0000e9    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                  TEXTO_6   0x0000ec    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                  TEXTO_7   0x0000ef    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                  TEXTO_8   0x0000f2    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                  TEXTO_9   0x0000f5    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                 TEXTO_10   0x0000f8    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                 TEXTO_11   0x0000fb    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                 TEXTO_12   0x0000fe    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                 TEXTO_13   0x000100    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                 TEXTO_14   0x000102    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                 TEXTO_15   0x000104    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    TEXT1   0x000106    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    BRIN1   0x000108    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    TEXT2   0x00011c    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    BRIN2   0x00011e    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    TEXT3   0x000132    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    BRIN3   0x000134    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    TEXT4   0x000148    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    BRIN4   0x00014a    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    TEXT5   0x00015e    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    BRIN5   0x000160    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    TEXT6   0x000174    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    BRIN6   0x000176    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    TEXT7   0x00018a    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    BRIN7   0x00018c    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    TEXT8   0x0001a0    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    BRIN8   0x0001a2    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    TEXT9   0x0001b6    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    BRIN9   0x0001b8    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                   TEXT10   0x0001cc    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                   BRIN10   0x0001ce    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                   TEXT11   0x0001e2    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                   BRIN11   0x0001e4    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                   TEXT12   0x0001f8    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                   BRIN12   0x0001fa    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                   TEXT13   0x00020e    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                   BRIN13   0x000210    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                   TEXT14   0x000224    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                   BRIN14   0x000226    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                   TEXT15   0x00023a    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                   BRIN15   0x00023c    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+                    SALIR   0x000250    program     static D:\Informes V CICLO\Microcontroladores\LAB10\mensaje.asm
+
+
