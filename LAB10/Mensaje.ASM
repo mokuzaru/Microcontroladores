@@ -1,11 +1,3 @@
-;*****************************************************
-;Nombre de archivo:mensaje.asm
-;Rutina para mandar cadena de mensajes al LCD
-;Hecho por: Ing. Carlos Enrique Mendiola Mogollón
-;Empresa: Electronic-digital (CM)
-;E-mail: digitalcorel.com
-;Dirección Web:www.electronic-digital.blogspot.com
-;******************************************************
 cblock 
 OFFSET
 ENVIAR_DATA
@@ -13,7 +5,7 @@ DATAX
 COMPARADOR
 endc
 ;----------------------------------------------  
-;Mensajes a ser enviados, máximo 16 caracteres
+;Mensajes enviados, máximo 16 caracteres
 TEXTO_1
     addwf  PCL,1
     DT     "Voltaje: ",0XFF

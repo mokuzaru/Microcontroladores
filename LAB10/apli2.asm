@@ -1,4 +1,4 @@
-;Aplicación - valores analógicos en lcd
+;valores analógicos en lcd
 list p=16f877a
 include<p16f877a.inc>
 include<macro16f877.inc>

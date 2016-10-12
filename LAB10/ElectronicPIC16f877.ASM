@@ -1,12 +1,3 @@
-;**************************************************************
-;==============================================================
-;Nombre de archivo:Electronicpic16f877.asm
-;Hecho por: Ing. Carlos Enrique Mendiola Mogollón
-;Empresa: Electronic-digital(CM)
-;E-mail: Electronic_digital20@hotmail.com
-;Dirección Web:www.electronic-digital.blogspot.com
-;==============================================================
-;**************************************************************
 cblock	                	
 Cont_1        
 Cont_2        

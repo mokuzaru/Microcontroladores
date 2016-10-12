@@ -1,11 +1,3 @@
-;****************************************************************
-;Nombre de archivo:adc.asm
-;Rutina para usar el conversor ADC
-;Hecho por: Ing. Carlos Enrique Mendiola Mogollón
-;Empresa: Electronic-digital (CM)
-;E-mail: digitalcorel.com
-;Dirección Web:www.electronic-digital.blogspot.com
-;****************************************************************
 cblock 
 RegADC1
 RegADC2
