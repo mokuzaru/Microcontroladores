@@ -1,0 +1,78 @@
+MPLINK 4.49, Linker
+Linker Map File - Created Thu May 15 20:21:37 2014
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_1       code   0x000000    program   0x000002
+                   .org_2       code   0x000004    program   0x0000e0
+    .config_2007_EJEM01.O       code   0x002007    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000000      
+                            0x000004    0x000073      
+                            0x002007    0x002007      
+            114 out of 8454 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+        DisplayAnodoComun   0x000042    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+       DisplayCatodoComun   0x000037    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+               FinIntTMR0   0x000070    program     static D:\Informes V CICLO\Microcontroladores\LAB9\interrupcion.asm
+                   Inicio   0x000005    program     static D:\Informes V CICLO\Microcontroladores\LAB9\ejem01.asm
+            InicioIntTMR0   0x000062    program     static D:\Informes V CICLO\Microcontroladores\LAB9\interrupcion.asm
+             Interrupcion   0x00000f    program     static D:\Informes V CICLO\Microcontroladores\LAB9\ejem01.asm
+              Milisegundo   0x000018    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                  Segundo   0x000026    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                   repite   0x00000c    program     static D:\Informes V CICLO\Microcontroladores\LAB9\ejem01.asm
+                      ret   0x00004e    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                 ret100ms   0x000058    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                 ret300ms   0x00005b    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                  ret50ms   0x000053    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                 ret600ms   0x00005f    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                  retardo   0x00004d    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                       xx   0x000019    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                      xx1   0x00001b    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                      xx2   0x00001d    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                      xxx   0x000027    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                     xxx1   0x000029    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                     xxx2   0x00002b    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                     xxx3   0x00002d    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   Inicio   0x000005    program     static D:\Informes V CICLO\Microcontroladores\LAB9\ejem01.asm
+                   repite   0x00000c    program     static D:\Informes V CICLO\Microcontroladores\LAB9\ejem01.asm
+             Interrupcion   0x00000f    program     static D:\Informes V CICLO\Microcontroladores\LAB9\ejem01.asm
+              Milisegundo   0x000018    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                       xx   0x000019    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                      xx1   0x00001b    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                      xx2   0x00001d    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                  Segundo   0x000026    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                      xxx   0x000027    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                     xxx1   0x000029    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                     xxx2   0x00002b    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                     xxx3   0x00002d    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+       DisplayCatodoComun   0x000037    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+        DisplayAnodoComun   0x000042    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                  retardo   0x00004d    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                      ret   0x00004e    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                  ret50ms   0x000053    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                 ret100ms   0x000058    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                 ret300ms   0x00005b    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                 ret600ms   0x00005f    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+            InicioIntTMR0   0x000062    program     static D:\Informes V CICLO\Microcontroladores\LAB9\interrupcion.asm
+               FinIntTMR0   0x000070    program     static D:\Informes V CICLO\Microcontroladores\LAB9\interrupcion.asm
+
+

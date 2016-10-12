@@ -1,0 +1,88 @@
+MPLINK 4.49, Linker
+Linker Map File - Created Sun May 18 15:02:39 2014
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_1       code   0x000000    program   0x000002
+                   .org_2       code   0x000004    program   0x000134
+.config_2007_APLICACION.O       code   0x002007    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000000      
+                            0x000004    0x00009d      
+                            0x002007    0x002007      
+            156 out of 8454 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                ApagarLed   0x00003e    program     static D:\Informes V CICLO\Microcontroladores\LAB9\aplicacion.asm
+        DisplayAnodoComun   0x00006c    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+       DisplayCatodoComun   0x000061    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+               FinIntTMR0   0x00009a    program     static D:\Informes V CICLO\Microcontroladores\LAB9\interrupcion.asm
+               IniciaCero   0x000023    program     static D:\Informes V CICLO\Microcontroladores\LAB9\aplicacion.asm
+              IniciaCero2   0x00002b    program     static D:\Informes V CICLO\Microcontroladores\LAB9\aplicacion.asm
+                   Inicio   0x000005    program     static D:\Informes V CICLO\Microcontroladores\LAB9\aplicacion.asm
+            InicioIntTMR0   0x00008c    program     static D:\Informes V CICLO\Microcontroladores\LAB9\interrupcion.asm
+             Interrupcion   0x00002f    program     static D:\Informes V CICLO\Microcontroladores\LAB9\aplicacion.asm
+              Milisegundo   0x000042    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+               PrenderLed   0x00003a    program     static D:\Informes V CICLO\Microcontroladores\LAB9\aplicacion.asm
+                  Segundo   0x000050    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                    paso1   0x000020    program     static D:\Informes V CICLO\Microcontroladores\LAB9\aplicacion.asm
+                   repite   0x000015    program     static D:\Informes V CICLO\Microcontroladores\LAB9\aplicacion.asm
+                      ret   0x000078    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                 ret100ms   0x000082    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                 ret300ms   0x000085    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                  ret50ms   0x00007d    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                 ret600ms   0x000089    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                  retardo   0x000077    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                       xx   0x000043    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                      xx1   0x000045    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                      xx2   0x000047    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                      xxx   0x000051    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                     xxx1   0x000053    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                     xxx2   0x000055    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                     xxx3   0x000057    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   Inicio   0x000005    program     static D:\Informes V CICLO\Microcontroladores\LAB9\aplicacion.asm
+                   repite   0x000015    program     static D:\Informes V CICLO\Microcontroladores\LAB9\aplicacion.asm
+                    paso1   0x000020    program     static D:\Informes V CICLO\Microcontroladores\LAB9\aplicacion.asm
+               IniciaCero   0x000023    program     static D:\Informes V CICLO\Microcontroladores\LAB9\aplicacion.asm
+              IniciaCero2   0x00002b    program     static D:\Informes V CICLO\Microcontroladores\LAB9\aplicacion.asm
+             Interrupcion   0x00002f    program     static D:\Informes V CICLO\Microcontroladores\LAB9\aplicacion.asm
+               PrenderLed   0x00003a    program     static D:\Informes V CICLO\Microcontroladores\LAB9\aplicacion.asm
+                ApagarLed   0x00003e    program     static D:\Informes V CICLO\Microcontroladores\LAB9\aplicacion.asm
+              Milisegundo   0x000042    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                       xx   0x000043    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                      xx1   0x000045    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                      xx2   0x000047    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                  Segundo   0x000050    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                      xxx   0x000051    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                     xxx1   0x000053    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                     xxx2   0x000055    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                     xxx3   0x000057    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+       DisplayCatodoComun   0x000061    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+        DisplayAnodoComun   0x00006c    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                  retardo   0x000077    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                      ret   0x000078    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                  ret50ms   0x00007d    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                 ret100ms   0x000082    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                 ret300ms   0x000085    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+                 ret600ms   0x000089    program     static D:\Informes V CICLO\Microcontroladores\LAB9\electronicpic16f877.asm
+            InicioIntTMR0   0x00008c    program     static D:\Informes V CICLO\Microcontroladores\LAB9\interrupcion.asm
+               FinIntTMR0   0x00009a    program     static D:\Informes V CICLO\Microcontroladores\LAB9\interrupcion.asm
+
+
